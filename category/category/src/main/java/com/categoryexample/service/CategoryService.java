@@ -14,8 +14,8 @@ public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    public Category saveCategory(Category category) {
-        return categoryRepository.save(category);
+    public List<Category> getAllCategories() {
+        return categoryRepository.findAll();
     }
     public List<Category> findByCategoryName(String category){
         return categoryRepository.findByCategoryName(category);
@@ -23,8 +23,13 @@ public class CategoryService {
     public Optional<Category> findById(int id){
         return categoryRepository.findById(id);
     }
+
     public List<Category> findByDateOfBirthIsNull(){
         return categoryRepository.findByDateOfBirthIsNull();
+    }
+
+    public List<Category> findByYear(int year) {
+        return categoryRepository.findByBirthYear(year);
     }
 
 }

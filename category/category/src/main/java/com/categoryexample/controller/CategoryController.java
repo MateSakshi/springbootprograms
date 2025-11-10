@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/category")
 public class CategoryController {
@@ -15,22 +16,24 @@ public class CategoryController {
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
-    @PostMapping
-    public Category createCategory(@RequestBody Category category){
-        return categoryService.saveCategory(category);
+    @GetMapping("/all")
+    public List<Category> getAllCategories() {
+        return categoryService.getAllCategories();
     }
     @GetMapping("/categoryName/{categoryName}")
     public List<Category> getByCategory(@PathVariable String categoryName){
         return categoryService.findByCategoryName(categoryName);
     }
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public Optional<Category> getByID(@PathVariable int id){
         return categoryService.findById(id);
     }
-    @GetMapping("/dateOfBirth/Null")
+    @GetMapping("/dob/Null")
     public List<Category> getByDOBIsNull(){
         return categoryService.findByDateOfBirthIsNull();
     }
-
-
+    @GetMapping("/dob/{year}")
+    public List<Category> getByYear(@PathVariable int year) {
+        return categoryService.findByYear(year);
+    }
 }

@@ -1,10 +1,11 @@
 package com.categoryexample.model;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "category")
@@ -17,11 +18,11 @@ public class Category {
     @Column(name = "Name")
     private String name;
 
-    @Column(name = "Category_Name")
+    @Column(name = "CategoryName")
     private String categoryName;
 
-    @Column(name = "Date_of_Birth")
-    private String dateOfBirth;
+    @Column(name = "DateOfBirth")
+    private LocalDate dateOfBirth;
 
     public int getId() {
         return id;
@@ -44,10 +45,10 @@ public class Category {
         this.categoryName = categoryName;
     }
 
-    public String getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
