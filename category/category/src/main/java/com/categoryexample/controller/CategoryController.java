@@ -16,19 +16,28 @@ public class CategoryController {
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
-    @GetMapping("/all")
-    public List<Category> getAllCategories() {
-        return categoryService.getAllCategories();
+    @PostMapping
+    public Category createCategory(@RequestBody Category category) {
+        return categoryService.saveEmployee(category);
     }
-    @GetMapping("/categoryName/{categoryName}")
-    public List<Category> getByCategory(@PathVariable String categoryName){
-        return categoryService.findByCategoryName(categoryName);
+
+    @GetMapping("/all")
+    public List<Category> getAllEmployees() {
+        return categoryService.getAllEmployees();
+    }
+    @GetMapping("/departmentName/{departmentName}")
+    public List<Category> getByDepartment(@PathVariable String departmentName){
+        return categoryService.findByDepartmentName(departmentName);
     }
     @GetMapping("/id/{id}")
     public Optional<Category> getByID(@PathVariable int id){
         return categoryService.findById(id);
     }
-    @GetMapping("/dob/Null")
+    @GetMapping("/name/{firstName}")
+    public List<Category> getByName(@PathVariable String firstName){
+        return categoryService.findByFirstName(firstName);
+    }
+    @GetMapping("/dob/null")
     public List<Category> getByDOBIsNull(){
         return categoryService.findByDateOfBirthIsNull();
     }

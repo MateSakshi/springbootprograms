@@ -4,53 +4,40 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "category")
+@Table(name = "employee")
+@Setter
+@Getter
 public class Category {
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "id")
     private int id;
 
-    @Column(name = "Name")
-    private String name;
+    @Column(name = "first_name")
+    private String firstName;
 
-    @Column(name = "CategoryName")
-    private String categoryName;
+    @Column(name="last_name")
+    private String lastName;
 
-    @Column(name = "DateOfBirth")
+    @Column(name = "department")
+    private String departmentName;
+
+    @Column(name="roll")
+    private String roll;
+
+    @Column(name = "dob")
     private LocalDate dateOfBirth;
 
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
+    @Column(name="doj")
+    private LocalDate dateOfJoin;
 
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCategoryName() {
-        return categoryName;
-    }
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
+    @Column(name="comment")
+    private String comment;
 
 }
